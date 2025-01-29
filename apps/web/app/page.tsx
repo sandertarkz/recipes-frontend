@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <Button appName="web" className={styles.secondary}>
-        Button example
+        Hello world
       </Button>
       <Image
         aria-hidden
