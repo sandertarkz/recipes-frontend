@@ -1,18 +1,12 @@
-import Image from "next/image";
-import { Button } from "@repo/ui/button";
+import { Button } from "@workspace/ui/components/button";
 
-export default function Home() {
+export default function Page() {
   return (
-    <div className="bg-gray-200">
-      <Button appName="web">Hello world</Button>
-      <div className="text-red-500">123123</div>
-      <Image
-        aria-hidden
-        src="/next.svg"
-        alt="next icon"
-        width={300}
-        height={60}
-      />
+    <div className="flex items-center justify-center min-h-svh">
+      <div className="flex flex-col items-center justify-center gap-4">
+        <h1 className="text-2xl font-bold">Hello World</h1>
+        <Button size="sm">Button</Button>
+      </div>
     </div>
   );
 }
