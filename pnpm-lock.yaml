@@ -78,9 +78,6 @@ importers:
       '@workspace/ui':
         specifier: workspace:*
         version: link:../ui
-      lucide-react:
-        specifier: 0.456.0
-        version: 0.456.0(react@19.0.0)
       react:
         specifier: ^19.0.0
         version: 19.0.0
@@ -100,12 +97,6 @@ importers:
       '@workspace/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      postcss:
-        specifier: ^8
-        version: 8.5.1
-      tailwindcss:
-        specifier: ^3.4.1
-        version: 3.4.17(ts-node@10.9.2(@types/node@22.13.0)(typescript@5.7.3))
       typescript:
         specifier: 5.7.3
         version: 5.7.3
