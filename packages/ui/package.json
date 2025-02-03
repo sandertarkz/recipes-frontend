@@ -20,6 +20,8 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@storybook/react": "^8.5.3",
+    "@storybook/test": "^8.5.3",
     "@turbo/gen": "^2.2.3",
     "@types/node": "^22.9.0",
     "@types/react": "19.0.8",

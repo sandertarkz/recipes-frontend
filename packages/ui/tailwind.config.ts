@@ -7,6 +7,7 @@ const config = {
   content: [
     "app/**/*.{ts,tsx}",
     "components/**/*.{ts,tsx}",
+    "../../apps/storybook/.storybook/preview.tsx",
     "../../packages/ui/src/components/**/*.{ts,tsx}",
     "../../packages/auth/src/components/**/*.{ts,tsx}",
     "../../packages/layout/src/components/**/*.{ts,tsx}",

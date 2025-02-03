@@ -1,5 +1,4 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import Link from "next/link";
 import "@workspace/ui/globals.css";
 import { Providers } from "@/components/providers";
 import { Layout } from "@workspace/layout/components/layout";
@@ -23,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased `}
+        className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased`}
       >
         <Layout
           header={
