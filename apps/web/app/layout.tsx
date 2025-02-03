@@ -2,6 +2,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import "@workspace/ui/globals.css";
 import { Providers } from "@/components/providers";
+import { Layout } from "@workspace/layout/components/layout";
+import { Header } from "@workspace/layout/components/header";
 
 const fontSans = Geist({
   subsets: ["latin"],
@@ -23,25 +25,21 @@ export default function RootLayout({
       <body
         className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased `}
       >
-        <header>
-          <nav className="flex justify-center w-full p-4">
-            <ul className="flex space-x-4">
-              <li>
-                <Link href="/">Home</Link>
-              </li>
-              <li>
-                <Link href="/recipes">Recipes</Link>
-              </li>
-              <li>
-                <Link href="/register">Register</Link>
-              </li>
-              <li>
-                <Link href="/login">Login</Link>
-              </li>
-            </ul>
-          </nav>
-        </header>
-        <Providers>{children}</Providers>
+        <Layout
+          header={
+            <Header
+              navLinks={[
+                { name: "Home", url: "/" },
+                { name: "Recipes", url: "/recipes" },
+                { name: "Login", url: "/login" },
+                { name: "Register", url: "/register" },
+              ]}
+            />
+          }
+          footer={<footer>Footer</footer>}
+        >
+          <Providers>{children}</Providers>
+        </Layout>
       </body>
     </html>
   );

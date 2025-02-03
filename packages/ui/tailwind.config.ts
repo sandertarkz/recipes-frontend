@@ -9,6 +9,9 @@ const config = {
     "components/**/*.{ts,tsx}",
     "../../packages/ui/src/components/**/*.{ts,tsx}",
     "../../packages/auth/src/components/**/*.{ts,tsx}",
+    "../../packages/layout/src/components/**/*.{ts,tsx}",
+    "../../packages/home/src/components/**/*.{ts,tsx}",
+    "../../packages/recipes/src/components/**/*.{ts,tsx}",
   ],
   theme: {
     extend: {

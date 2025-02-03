@@ -29,6 +29,15 @@ importers:
       '@workspace/auth':
         specifier: workspace:*
         version: link:../../packages/auth
+      '@workspace/home':
+        specifier: workspace:*
+        version: link:../../packages/home
+      '@workspace/layout':
+        specifier: workspace:*
+        version: link:../../packages/layout
+      '@workspace/recipes':
+        specifier: workspace:*
+        version: link:../../packages/recipes
       '@workspace/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -139,6 +148,96 @@ importers:
       typescript-eslint:
         specifier: ^8.15.0
         version: 8.22.0(eslint@9.19.0(jiti@1.21.7))(typescript@5.7.3)
+
+  packages/home:
+    dependencies:
+      '@workspace/ui':
+        specifier: workspace:*
+        version: link:../ui
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.0.0(react@19.0.0)
+    devDependencies:
+      '@types/react':
+        specifier: 19.0.8
+        version: 19.0.8
+      '@types/react-dom':
+        specifier: 19.0.3
+        version: 19.0.3(@types/react@19.0.8)
+      '@workspace/eslint-config':
+        specifier: workspace:^
+        version: link:../eslint-config
+      '@workspace/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      typescript:
+        specifier: 5.7.3
+        version: 5.7.3
+
+  packages/layout:
+    dependencies:
+      '@types/node':
+        specifier: ^22.13.0
+        version: 22.13.0
+      '@workspace/ui':
+        specifier: workspace:*
+        version: link:../ui
+      next:
+        specifier: ^15.1.0
+        version: 15.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.0.0(react@19.0.0)
+    devDependencies:
+      '@types/react':
+        specifier: 19.0.8
+        version: 19.0.8
+      '@types/react-dom':
+        specifier: 19.0.3
+        version: 19.0.3(@types/react@19.0.8)
+      '@workspace/eslint-config':
+        specifier: workspace:^
+        version: link:../eslint-config
+      '@workspace/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      typescript:
+        specifier: 5.7.3
+        version: 5.7.3
+
+  packages/recipes:
+    dependencies:
+      '@workspace/ui':
+        specifier: workspace:*
+        version: link:../ui
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.0.0(react@19.0.0)
+    devDependencies:
+      '@types/react':
+        specifier: 19.0.8
+        version: 19.0.8
+      '@types/react-dom':
+        specifier: 19.0.3
+        version: 19.0.3(@types/react@19.0.8)
+      '@workspace/eslint-config':
+        specifier: workspace:^
+        version: link:../eslint-config
+      '@workspace/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      typescript:
+        specifier: 5.7.3
+        version: 5.7.3
 
   packages/typescript-config: {}
 
