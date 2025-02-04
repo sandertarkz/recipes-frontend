@@ -32,11 +32,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build the project
-        run: pnpm build
-
       - name: Run Lint
         run: pnpm lint
 
       - name: Test the project
         run: pnpm test
+
+      - name: Build the project
+        run: pnpm build
+
