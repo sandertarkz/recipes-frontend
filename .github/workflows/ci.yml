@@ -24,14 +24,17 @@ jobs:
       - name: Install pnpm
         run: npm install -g pnpm
 
+      - name: Check pnpm version
+        run: pnpm --version
+
       - name: Install dependencies
         run: pnpm install
 
       - name: Build the project
-        run: npx turbo run build
+        run: pnpm build
 
       - name: Run Lint
-        run: npm run lint
+        run: pnpm lint
 
       - name: Test the project
-        run: npx turbo run test
+        run: pnpm test
