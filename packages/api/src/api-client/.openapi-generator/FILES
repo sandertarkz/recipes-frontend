@@ -1,0 +1,17 @@
+.openapi-generator-ignore
+apis/AuthApi.ts
+apis/PostsApi.ts
+apis/UsersApi.ts
+apis/index.ts
+index.ts
+models/HTTPValidationError.ts
+models/PostCreate.ts
+models/PostPublic.ts
+models/Token.ts
+models/UserCreate.ts
+models/UserLogin.ts
+models/UserPublic.ts
+models/ValidationError.ts
+models/ValidationErrorLocInner.ts
+models/index.ts
+runtime.ts

@@ -7,15 +7,18 @@
     "lint": "turbo lint",
     "test": "turbo test",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "storybook": "pnpm --filter storybook run storybook"
+    "storybook": "pnpm --filter storybook run storybook",
+    "generate:api": "openapi-generator-cli generate -i https://app.sandertar.com/openapi.json -g typescript-fetch -o ./packages/api/src/api-client"
   },
   "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.16.3",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^14.6.1",
     "@vitejs/plugin-react": "^4.3.4",
     "@workspace/eslint-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
+    "install": "^0.13.0",
     "jsdom": "^26.0.0",
     "prettier": "^3.2.5",
     "turbo": "^2.3.0",
