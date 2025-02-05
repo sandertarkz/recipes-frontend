@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Container } from "@workspace/layout/components/container"; // Adjust the path based on your project structure
+import { Container } from "@workspace/ui/components/layout/container"; // Adjust the path based on your project structure
 
 const meta = {
   title: "Layout/Container",

@@ -1,4 +1,4 @@
-import { Container } from "@workspace/layout/components/container";
+import { Container } from "@workspace/ui/components/layout/container";
 
 export const Layout = ({
   header,

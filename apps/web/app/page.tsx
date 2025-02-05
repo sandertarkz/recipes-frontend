@@ -1,4 +1,4 @@
-import { Hero } from "@workspace/home/components/Hero";
+import { Hero } from "@/components/home/hero";
 
 export default function Page() {
   return <Hero />;

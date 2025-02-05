@@ -7,12 +7,9 @@ const config = {
   content: [
     "app/**/*.{ts,tsx}",
     "components/**/*.{ts,tsx}",
-    "../../apps/storybook/.storybook/preview.tsx",
+    "../../apps/web/**/*.{ts,tsx}", // this one is used when running the storybook app
+    "../../apps/storybook/.storybook/preview.tsx", // this one is used when running the storybook app
     "../../packages/ui/src/components/**/*.{ts,tsx}",
-    "../../packages/auth/src/components/**/*.{ts,tsx}",
-    "../../packages/layout/src/components/**/*.{ts,tsx}",
-    "../../packages/home/src/components/**/*.{ts,tsx}",
-    "../../packages/recipes/src/components/**/*.{ts,tsx}",
   ],
   theme: {
     extend: {
