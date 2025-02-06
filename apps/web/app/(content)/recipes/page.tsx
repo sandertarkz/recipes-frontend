@@ -1,11 +1,10 @@
-import { Suspense } from "react";
 import {
   HydrationBoundary,
   QueryClient,
   dehydrate,
 } from "@tanstack/react-query";
 
-import { Recipes } from "@/components/recipes/recipes";
+import { RecipeListPage } from "@/components/recipes/list-page";
 import { getRecipesKey, postsApi } from "@workspace/api";
 
 export const dynamic = "force-dynamic";
@@ -26,7 +25,7 @@ export default async function Page({
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <Recipes />
+      <RecipeListPage search={search} />
     </HydrationBoundary>
   );
 }

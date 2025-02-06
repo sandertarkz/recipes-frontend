@@ -3,6 +3,7 @@ import "@workspace/ui/globals.css";
 import { Providers } from "@/components/providers";
 import { Layout } from "@workspace/ui/components/layout/layout";
 import { Header } from "@workspace/ui/components/layout/header";
+import { Footer } from "@workspace/ui/components/layout/footer";
 
 const fontSans = Geist({
   subsets: ["latin"],
@@ -13,6 +14,13 @@ const fontMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
 });
+
+const navLinks = [
+  { name: "Home", url: "/" },
+  { name: "Recipes", url: "/recipes" },
+  { name: "Login", url: "/login" },
+  { name: "Register", url: "/register" },
+];
 
 export default function RootLayout({
   children,
@@ -25,17 +33,8 @@ export default function RootLayout({
         className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased`}
       >
         <Layout
-          header={
-            <Header
-              navLinks={[
-                { name: "Home", url: "/" },
-                { name: "Recipes", url: "/recipes" },
-                { name: "Login", url: "/login" },
-                { name: "Register", url: "/register" },
-              ]}
-            />
-          }
-          footer={<footer>Footer</footer>}
+          header={<Header navLinks={navLinks} />}
+          footer={<Footer navLinks={navLinks} />}
         >
           <Providers>{children}</Providers>
         </Layout>

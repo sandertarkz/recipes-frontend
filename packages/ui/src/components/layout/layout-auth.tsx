@@ -12,7 +12,7 @@ export const Layout = ({
   return (
     <div className="min-h-svh flex flex-col">
       <div>{header}</div>
-      <Container className="flex-1 py-10" asChild>
+      <Container className="flex-1 py-10 flex items-center" asChild>
         <main>{children}</main>
       </Container>
       <div>{footer}</div>
