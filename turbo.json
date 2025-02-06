@@ -1,10 +1,12 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "ui": "tui",
+  "globalDependencies": ["**/.env*", ".env*"],
   "globalEnv": ["NEXT_PUBLIC_API_BASE_URL"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
+      "env": ["NEXT_PUBLIC_API_BASE_URL"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
@@ -19,6 +21,8 @@
     },
     "dev": {
       "cache": false,
+      "env": ["NEXT_PUBLIC_API_BASE_URL"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "persistent": true
     }
   }
