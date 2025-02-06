@@ -13,7 +13,7 @@ export const RecipeListPage = ({ search }: { search?: string }) => {
   return (
     <RecipeFilters>
       <RecipeList
-        data={data}
+        data={data?.items}
         isLoading={isLoading}
         isFetching={isFetching}
         error={error}
