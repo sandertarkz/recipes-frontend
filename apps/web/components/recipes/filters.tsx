@@ -1,15 +1,29 @@
 "use client";
 import { Button } from "@workspace/ui/components/button";
 import { Input } from "@workspace/ui/components/input";
+import { PaginationControl } from "@workspace/ui/components/pagination";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
+import { RecipeListFilters } from "./types";
 
-export const RecipeFilters = ({ children }: { children: React.ReactNode }) => {
+export const RecipeFilters = ({
+  children,
+  totalPages = 0,
+  filters,
+}: {
+  children: React.ReactNode;
+  totalPages?: number;
+  filters: RecipeListFilters;
+}) => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [search, setSearch] = useState(searchParams.get("search") || "");
-
+  const [search, setSearch] = useState(filters.search || "");
+  const onChangeSearchParams = (key: string, value: string) => {
+    const newParams = new URLSearchParams(searchParams.toString());
+    newParams.set(key, value);
+    router.push(`${pathname}?${newParams.toString()}`);
+  };
   return (
     <div>
       <div className="flex justify-end mb-4">
@@ -22,17 +36,19 @@ export const RecipeFilters = ({ children }: { children: React.ReactNode }) => {
           <Button
             className=""
             onClick={() => {
-              const newParams = new URLSearchParams(searchParams.toString());
-              newParams.set("search", search);
-              router.push(`${pathname}?${newParams.toString()}`);
+              onChangeSearchParams("search", search);
             }}
           >
             Search
           </Button>
         </div>
       </div>
-
       {children}
+      <PaginationControl
+        totalPages={totalPages}
+        currentPage={filters.page}
+        onPageChange={(page) => onChangeSearchParams("page", page.toString())}
+      />
     </div>
   );
 };

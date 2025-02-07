@@ -3,15 +3,16 @@ import { useQuery } from "@tanstack/react-query";
 import { getRecipesKey, postsApi } from "@workspace/api";
 import { RecipeFilters } from "./filters";
 import { RecipeList } from "./list";
+import { RecipeListFilters } from "./types";
 
-export const RecipeListPage = ({ search }: { search?: string }) => {
-  const queryKey = getRecipesKey(undefined, { search });
+export const RecipeListPage = ({ filters }: { filters: RecipeListFilters }) => {
+  const queryKey = getRecipesKey(undefined, filters);
   const { data, isLoading, isFetching, error } = useQuery({
     queryKey,
-    queryFn: () => postsApi.getPostsPostsGet({ search }),
+    queryFn: () => postsApi.getPostsPostsGet(filters),
   });
   return (
-    <RecipeFilters>
+    <RecipeFilters totalPages={data?.pages || 0} filters={filters}>
       <RecipeList
         data={data?.items}
         isLoading={isLoading}

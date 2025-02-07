@@ -6,17 +6,22 @@ import {
 
 import { RecipeListPage } from "@/components/recipes/list-page";
 import { getRecipesKey, postsApi } from "@workspace/api";
+import { RecipeListFilters } from "@/components/recipes/types";
 
 export const dynamic = "force-dynamic";
 
 export default async function Page({
   searchParams,
 }: {
-  searchParams: { search: string };
+  searchParams: Promise<{ page?: string; search?: string; size?: string }>;
 }) {
+  const { page, size, search } = await searchParams;
+  const filters: RecipeListFilters = {
+    search: search,
+    page: page ? parseInt(page, 10) : 1,
+    size: size ? parseInt(size, 10) : 10,
+  };
   const queryClient = new QueryClient();
-  const search = searchParams.search;
-  const filters = { search };
   const queryKey = getRecipesKey(undefined, filters);
   await queryClient.prefetchQuery({
     queryKey,
@@ -25,7 +30,7 @@ export default async function Page({
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <RecipeListPage search={search} />
+      <RecipeListPage filters={filters} />
     </HydrationBoundary>
   );
 }
