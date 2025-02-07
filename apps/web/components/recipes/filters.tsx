@@ -21,6 +21,9 @@ export const RecipeFilters = ({
   const [search, setSearch] = useState(filters.search || "");
   const onChangeSearchParams = (key: string, value: string) => {
     const newParams = new URLSearchParams(searchParams.toString());
+    if (key !== "page") {
+      newParams.delete("page");
+    }
     newParams.set(key, value);
     router.push(`${pathname}?${newParams.toString()}`);
   };
