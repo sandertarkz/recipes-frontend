@@ -7,18 +7,13 @@ import { RecipeListFilters } from "./types";
 
 export const RecipeListPage = ({ filters }: { filters: RecipeListFilters }) => {
   const queryKey = getRecipesKey(undefined, filters);
-  const { data, isLoading, isFetching, error } = useQuery({
+  const { data, isFetching, error } = useQuery({
     queryKey,
     queryFn: () => postsApi.getPostsPostsGet(filters),
   });
   return (
     <RecipeFilters totalPages={data?.pages || 0} filters={filters}>
-      <RecipeList
-        data={data?.items}
-        isLoading={isLoading}
-        isFetching={isFetching}
-        error={error}
-      />
+      <RecipeList data={data?.items} isFetching={isFetching} error={error} />
     </RecipeFilters>
   );
 };
