@@ -3,7 +3,7 @@ import { PaginationControl } from "@workspace/ui/components/pagination";
 import { useState } from "react";
 
 const meta: Meta<typeof PaginationControl> = {
-  title: "Components/PaginationControl",
+  title: "UI/PaginationControl",
   component: PaginationControl,
   argTypes: {
     totalPages: { control: "number" },
