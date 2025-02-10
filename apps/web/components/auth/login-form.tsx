@@ -15,7 +15,6 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
-import { authApi } from "@workspace/api";
 import { handleApiFormErrors } from "@/lib/handle-api-form-errors";
 import Link from "next/link";
 
@@ -36,8 +35,15 @@ export function LoginForm({
   });
   const mutation = useMutation({
     mutationFn: (values: z.infer<typeof formSchema>) =>
-      authApi.createUserLoginPost({ userLogin: values }),
-    onSuccess: () => {
+      fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      }),
+    onSuccess: async (data) => {
+      if (!data.ok) {
+        throw data;
+      }
       form.reset();
       console.log("Login successful!");
     },

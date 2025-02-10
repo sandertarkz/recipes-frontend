@@ -1,23 +1,18 @@
 import { UseFormReturn } from "react-hook-form";
 
 export const handleApiFormErrors = async (
-  error: any,
+  errorResponse: any,
   form: UseFormReturn<any>,
 ) => {
-  if (error.response) {
-    try {
-      const errorData = await error.response.json(); // Explicitly parse JSON
-      console.log("Parsed error data:", errorData);
+  try {
+    const errorData = await errorResponse.json();
 
-      if (errorData.detail) {
-        Object.entries(errorData.detail).forEach(([field, message]) => {
-          form.setError(field as any, { message: message as string });
-        });
-      }
-    } catch (parseError) {
-      console.error("Failed to parse error response:", parseError);
+    if (errorData.details) {
+      Object.entries(errorData.details).forEach(([field, message]) => {
+        form.setError(field as any, { message: message as string });
+      });
     }
-  } else {
-    console.log("No response from API");
+  } catch (parseError) {
+    console.error("Failed to parse error response:", parseError);
   }
 };

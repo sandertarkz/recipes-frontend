@@ -43,7 +43,7 @@ export const RegisterForm = ({
       console.log("Registration successful!");
     },
     onError: async (error: any) => {
-      handleApiFormErrors(error, form);
+      handleApiFormErrors(error.response, form);
     },
   });
   const onSubmit = (values: z.infer<typeof formSchema>) => {
