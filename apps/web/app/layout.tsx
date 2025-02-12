@@ -4,6 +4,7 @@ import { Providers } from "@/components/providers";
 import { Layout } from "@workspace/ui/components/layout/layout";
 import { Header } from "@workspace/ui/components/layout/header";
 import { Footer } from "@workspace/ui/components/layout/footer";
+import { Route } from "@/lib/routes";
 
 const fontSans = Geist({
   subsets: ["latin"],
@@ -16,10 +17,10 @@ const fontMono = Geist_Mono({
 });
 
 const navLinks = [
-  { name: "Home", url: "/" },
-  { name: "Recipes", url: "/recipes" },
-  { name: "Login", url: "/login" },
-  { name: "Register", url: "/register" },
+  { name: "Home", url: Route.Home },
+  { name: "Recipes", url: Route.Recipes },
+  { name: "Login", url: Route.AuthLogin },
+  { name: "Register", url: Route.AuthRegister },
 ];
 
 export default function RootLayout({

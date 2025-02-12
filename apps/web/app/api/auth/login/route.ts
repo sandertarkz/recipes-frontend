@@ -1,30 +1,19 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { authApi } from "@workspace/api";
-import { decodeJwt } from "@/lib/decodeJWT";
+import { validateToken } from "@/lib/validate-token";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
 
     const res = await authApi.createUserLoginPost({ userLogin: body });
-    // External API returns a token (JWT)
     const token = res.accessToken;
-
-    const tokenPayload = decodeJwt(token);
-
-    if (!tokenPayload || !tokenPayload.exp) {
+    const tokenValidation = validateToken(token);
+    if (tokenValidation.error) {
       return NextResponse.json(
-        { error: "Invalid token format" },
-        { status: 500 },
-      );
-    }
-
-    const maxAge = tokenPayload.exp - Math.floor(Date.now() / 1000);
-    if (maxAge <= 0) {
-      return NextResponse.json(
-        { error: "Token is already expired" },
-        { status: 401 },
+        { error: tokenValidation.error },
+        { status: tokenValidation.error.status },
       );
     }
 
@@ -34,7 +23,7 @@ export async function POST(request: Request) {
       secure: false, // TODO: Set to true in prod
       path: "/",
       sameSite: "lax",
-      maxAge,
+      maxAge: tokenValidation.maxAge,
     });
 
     // Return success
