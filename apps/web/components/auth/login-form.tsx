@@ -17,6 +17,9 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { handleApiFormErrors } from "@/lib/handle-api-form-errors";
 import Link from "next/link";
+import { login } from "@/actions/auth";
+import { useRouter } from "next/navigation";
+import { Route } from "@/lib/routes";
 
 const formSchema = z.object({
   username: z.string().min(3, "Username must be at least 3 characters"),
@@ -26,6 +29,7 @@ const formSchema = z.object({
 export function LoginForm({
   className,
 }: React.ComponentPropsWithoutRef<"div">) {
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -34,18 +38,15 @@ export function LoginForm({
     },
   });
   const mutation = useMutation({
-    mutationFn: (values: z.infer<typeof formSchema>) =>
-      fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      }),
+    mutationFn: (values: z.infer<typeof formSchema>) => {
+      return login(values);
+    },
     onSuccess: async (data) => {
-      if (!data.ok) {
+      if (!data.success) {
         throw data;
       }
       form.reset();
-      console.log("Login successful!");
+      router.push(Route.MyRecipes);
     },
     onError: async (error: any) => {
       handleApiFormErrors(error, form);

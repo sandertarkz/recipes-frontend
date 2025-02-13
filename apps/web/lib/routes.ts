@@ -1,4 +1,4 @@
-export enum Route {
+export enum Route { // TODO: move to config.ts file
   AuthLogin = "/auth/login",
   AuthRegister = "/auth/register",
   Home = "/",

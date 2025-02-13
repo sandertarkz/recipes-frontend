@@ -16,7 +16,7 @@ export const RecipeCard = ({ recipe }: { recipe: PostPublic }) => {
     <Card>
       <CardHeader>
         <CardTitle>{recipe.title}</CardTitle>
-        <CardDescription>{recipe.createdAt.toISOString()}</CardDescription>
+        <CardDescription>{recipe.created_at}</CardDescription>
       </CardHeader>
       <CardContent>
         <p>{recipe.content || "No content"}</p>

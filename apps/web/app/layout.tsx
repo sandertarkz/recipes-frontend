@@ -6,6 +6,7 @@ import { Header } from "@workspace/ui/components/layout/header";
 import { Footer } from "@workspace/ui/components/layout/footer";
 import { Route } from "@/lib/routes";
 import { Toaster } from "@workspace/ui/components/toaster";
+import { getSession } from "@/actions/auth";
 
 const fontSans = Geist({
   subsets: ["latin"],
@@ -17,18 +18,24 @@ const fontMono = Geist_Mono({
   variable: "--font-mono",
 });
 
-const navLinks = [
-  { name: "Home", url: Route.Home },
-  { name: "Recipes", url: Route.Recipes },
-  { name: "Login", url: Route.AuthLogin },
-  { name: "Register", url: Route.AuthRegister },
-];
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await getSession();
+  const navLinks = [
+    { name: "Home", url: Route.Home },
+    { name: "Recipes", url: Route.Recipes },
+    { name: "My Recipes", url: Route.MyRecipes },
+  ];
+  if (!session) {
+    navLinks.push({ name: "Login", url: Route.AuthLogin });
+    navLinks.push({ name: "Register", url: Route.AuthRegister });
+  }
+  if (session) {
+    navLinks.push({ name: "Profile", url: Route.Profile });
+  }
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -39,6 +46,7 @@ export default function RootLayout({
           footer={<Footer navLinks={navLinks} />}
         >
           <Providers>
+            {session ? <div>Logged in</div> : <div>Logged out</div>}
             {children}
             <Toaster />
           </Providers>

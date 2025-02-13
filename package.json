@@ -8,7 +8,7 @@
     "test": "turbo test",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "storybook": "pnpm --filter storybook run storybook",
-    "generate:api": "openapi-generator-cli generate -i https://app.sandertar.com/openapi.json -g typescript-fetch -o ./packages/api/src/api-client"
+    "generate:api": "openapi-generator-cli generate -i https://app.sandertar.com/openapi.json -g typescript-axios -o ./packages/api/src/api-client --additional-properties=useSingleRequestParameter=true"
   },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.16.3",

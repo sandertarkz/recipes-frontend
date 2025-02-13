@@ -5,8 +5,9 @@ import {
 } from "@tanstack/react-query";
 
 import { RecipeListPage } from "@/components/recipes/list-page";
-import { getRecipesKey, postsApi } from "@workspace/api";
+import { getRecipesKey } from "@workspace/api";
 import { RecipeListFilters } from "@/components/recipes/types";
+import { getRecipes } from "@/actions/getRecipes";
 
 export const dynamic = "force-dynamic";
 
@@ -25,7 +26,7 @@ export default async function Page({
   const queryKey = getRecipesKey(undefined, filters);
   await queryClient.prefetchQuery({
     queryKey,
-    queryFn: () => postsApi.getPostsPostsGet(filters),
+    queryFn: async () => getRecipes(filters),
   });
 
   return (

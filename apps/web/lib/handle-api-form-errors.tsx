@@ -1,14 +1,12 @@
 import { UseFormReturn } from "react-hook-form";
 
 export const handleApiFormErrors = async (
-  errorResponse: any,
+  error: any, // TODO type this
   form: UseFormReturn<any>,
 ) => {
   try {
-    const errorData = await errorResponse.json();
-    console.log(errorData);
-    if (errorData.detail) {
-      Object.entries(errorData.detail).forEach(([field, message]) => {
+    if (error?.response?.detail) {
+      Object.entries(error?.response?.detail).forEach(([field, message]) => {
         form.setError(field as any, { message: message as string });
       });
     }

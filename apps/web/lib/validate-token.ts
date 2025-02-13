@@ -1,12 +1,12 @@
 import { decodeJwt } from "./decode-jwt";
 
 type ValidationResult = {
-  success?: boolean;
+  success: boolean;
   maxAge?: number;
   error?: { message: string; status: number };
 };
 
-export function validateToken(token?: string): ValidationResult {
+export function validateToken(token?: string | null): ValidationResult {
   if (!token) {
     return errorResponse("Token is missing", 400);
   }
@@ -25,5 +25,5 @@ export function validateToken(token?: string): ValidationResult {
 }
 
 function errorResponse(message: string, status: number): ValidationResult {
-  return { error: { message, status } };
+  return { success: false, error: { message, status } };
 }
