@@ -17,6 +17,7 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { usersApi } from "@workspace/api";
 import { handleApiFormErrors } from "@/lib/handle-api-form-errors";
+import { useToast } from "@workspace/ui/hooks/use-toast";
 
 const formSchema = z.object({
   username: z.string().min(3, "Username must be at least 3 characters"),
@@ -27,6 +28,8 @@ const formSchema = z.object({
 export const RegisterForm = ({
   className,
 }: React.ComponentPropsWithoutRef<"div">) => {
+  const { toast } = useToast();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -41,6 +44,10 @@ export const RegisterForm = ({
     onSuccess: () => {
       form.reset();
       console.log("Registration successful!");
+      toast({
+        title: "Registration successful!",
+        description: "Check your email!", // TODO: Add email verification
+      });
     },
     onError: async (error: any) => {
       handleApiFormErrors(error.response, form);

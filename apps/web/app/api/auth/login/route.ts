@@ -31,7 +31,7 @@ export async function POST(request: Request) {
   } catch (error: any) {
     const errorData = await error?.response?.json();
     return NextResponse.json(
-      { error: "Something went wrong", details: errorData?.detail },
+      { error: "Something went wrong", detail: errorData?.detail },
       { status: error?.response?.status || 500 },
     );
   }

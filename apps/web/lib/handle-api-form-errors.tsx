@@ -6,9 +6,9 @@ export const handleApiFormErrors = async (
 ) => {
   try {
     const errorData = await errorResponse.json();
-
-    if (errorData.details) {
-      Object.entries(errorData.details).forEach(([field, message]) => {
+    console.log(errorData);
+    if (errorData.detail) {
+      Object.entries(errorData.detail).forEach(([field, message]) => {
         form.setError(field as any, { message: message as string });
       });
     }

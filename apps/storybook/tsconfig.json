@@ -3,7 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"],    },
+      "@/*": ["../web/*"],
+    },
     "plugins": [
       {
         "name": "next"
@@ -16,5 +17,5 @@
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
 }

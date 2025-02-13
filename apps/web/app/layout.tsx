@@ -5,6 +5,7 @@ import { Layout } from "@workspace/ui/components/layout/layout";
 import { Header } from "@workspace/ui/components/layout/header";
 import { Footer } from "@workspace/ui/components/layout/footer";
 import { Route } from "@/lib/routes";
+import { Toaster } from "@workspace/ui/components/toaster";
 
 const fontSans = Geist({
   subsets: ["latin"],
@@ -37,7 +38,10 @@ export default function RootLayout({
           header={<Header navLinks={navLinks} />}
           footer={<Footer navLinks={navLinks} />}
         >
-          <Providers>{children}</Providers>
+          <Providers>
+            {children}
+            <Toaster />
+          </Providers>
         </Layout>
       </body>
     </html>
